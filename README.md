@@ -9,6 +9,7 @@ Use-cases:
 4) Access resources on how not to get detained in an act of civil disobedience
 5) Draw causal infographics that track how an issue develops and how it can be mitigated / resolved
 6) Tools to mass-analyze documents via schematization
+7) Create 'awareness' pages: easily shareable artifacts for government shaming
 ... and more!
 
 Goal:
@@ -17,5 +18,5 @@ The only important thing is: to add lines in a consistent basis. To build a shit
 build a community around.
 
 Architecture:
-Svelte + Supabase. Edge functions for hiding away complicated stuff to the backend. No fancy CSS stuff (other than Material Design icons, but that's it.)
+Svelte + Supabase. Edge functions for hiding away complicated stuff to the backend. That's it! No fancy CSS stuff (other than Material Design icons, but that's it.)
 
