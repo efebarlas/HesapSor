@@ -20,6 +20,9 @@
     "vite": "^4.1.0"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.7.1"
+    "@supabase/supabase-js": "^2.7.1",
+    "gridjs": "^6.0.6",
+    "gridjs-svelte": "^2.1.1",
+    "tabulator-tables": "^5.4.3"
   }
 }
