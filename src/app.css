@@ -42,6 +42,7 @@ h1 {
 /* ones that I added*/
 .centerer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

@@ -67,3 +67,5 @@ build a community around.
 Architecture:
 Svelte + Supabase. Edge functions for hiding away complicated stuff to the backend. That's it! No fancy CSS stuff (other than Material Design icons, but that's it.)
 
+For now, we'll avoid making SQL queries in client code, do those through edge functions, and avoid spending ANY time on postgresql policies.
+
