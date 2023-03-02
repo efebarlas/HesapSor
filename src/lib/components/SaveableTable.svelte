@@ -31,10 +31,12 @@
     async function saveTable() {
         // get the table data and save it to Supabase
         const newTableData = getTableData();
-        //const { data, error } = await supabase.functions.invoke('saveTable', {
-        //    body: { tableData: newTableData, tableId: tableId },
-        //})
-        console.log(newTableData)
+        const resp = await supabase.functions.invoke('saveTable', {
+            body: { name: 'Hello!' },
+        });
+        console.log('response:\n');
+        console.log(resp);
+        console.log(newTableData);
         supabase.from('table_documents').upsert({table_content: newTableData}).eq('id', tableId).then(response => {
           if (response.error) {
             console.error(response);

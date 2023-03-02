@@ -2,32 +2,32 @@
 // https://deno.land/manual/getting_started/setup_your_environment
 // This enables autocomplete, go to definition, etc.
 
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
-import { createClient } from '@supabase/supabase-js'
-import type { Database } from '../../../types/supabase';
-
-console.log("Hello from Functions!")
-
-
-const supabaseUrl = Deno.env.get('SUPABASE_URL')
-const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ACCOUNT_KEY');
-
-const supabase = createClient(supabaseUrl, supabaseKey);
-const supabaseServiceRole = Deno
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey)
-
+import { serve } from "http/server";
+import { supabaseAdmin } from "../_shared/supabaseAdmin.ts";
+import { corsHeaders } from "../_shared/cors.ts";
 
 serve(async (req) => {
-  const { name } = await req.json()
-  const data = {
-    message: `Hello ${name}!`,
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
   }
 
-  return new Response(
-    JSON.stringify(data),
-    { headers: { "Content-Type": "application/json" } },
-  )
-})
+  const { name } = await req.json();
+  const data = {
+    message: `Hello ${name}!`,
+  };
+
+  try {
+    return new Response(JSON.stringify(data), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+      status: 200,
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+      status: 400,
+    });
+  }
+});
 
 // To invoke:
 // curl -i --location --request POST 'http://localhost:54321/functions/v1/' \
