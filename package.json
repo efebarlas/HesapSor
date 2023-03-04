@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "generateTypes": "npx supabase gen types typescript --project-id cafirdxqjljdkflriqgw --schema public > ./types/supabase.ts && npx supabase gen types typescript --project-id cafirdxqjljdkflriqgw --schema public > ./supabase/functions/_shared/types/supabase.ts"
+    "generateTypes": "npx supabase gen types typescript --project-id cafirdxqjljdkflriqgw --schema public > ./types/supabase.ts && npx supabase gen types typescript --project-id cafirdxqjljdkflriqgw --schema public > ./supabase/functions/_shared/types/supabase.ts",
+    "deployFunction": "npx supabase functions deploy --project-ref cafirdxqjljdkflriqgw"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.0.2",
