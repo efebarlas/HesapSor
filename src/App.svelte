@@ -3,11 +3,8 @@
   import { supabase } from './lib/supabaseClient'
   import type { AuthSession } from '@supabase/supabase-js'
   import Login from './lib/components/Login.svelte'
-  import Account from './lib/components/Account.svelte'
-  import EditableTable from './lib/components/EditableTable.svelte';
+  import LivePosterDropdown from './lib/components/LivePosterDropdown.svelte';
   import SaveableTable from './lib/components/SaveableTable.svelte';
-  import Canvas from './lib/components/Canvas.svelte';
-
   let session: AuthSession
   let debuggingSingleComponent=true;
   onMount(() => {
@@ -32,6 +29,6 @@
 </div>
 {:else}
 <div class="centerer almost-all-of-window">
-  <Canvas/>
+  <LivePosterDropdown />
 </div>
 {/if}

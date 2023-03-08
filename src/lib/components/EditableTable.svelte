@@ -27,6 +27,7 @@
     });
 
     onMount(() => {
+        // consider switching out with handsontable
         table = new Tabulator(tableComponent, {
             data: data, //link data to table
             reactiveData: true, //enable data reactivity
