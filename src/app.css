@@ -47,6 +47,11 @@ h1 {
   align-items: center;
 }
 
+.almost-all-of-window {
+  height: 80vh;
+  width: 80vw;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
