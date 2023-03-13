@@ -13,6 +13,6 @@
 <Button><Chevron>{dropdownTitle}</Chevron></Button>
 <Dropdown>
     {#each options as option}
-        <DropdownItem on:click={option.handler}>{option.name}</DropdownItem>
+        <DropdownItem class="button" on:click={option.handler}>{option.name}</DropdownItem>
     {/each}
 </Dropdown>
