@@ -1,6 +1,7 @@
 -- create table profiles();
 -- CAUTION: THIS SCRIPT WILL CREATE EVERY POSTGRESQL
 -- RESOURCE FROM SCRATCH, WHICH MEANS ALL DATA WILL BE LOST!!!
+drop table if exists canvas_templates;
 drop table table_documents;
 drop table if exists entity_access;
 drop table if exists entities;
@@ -89,11 +90,19 @@ create TABLE table_documents (
   -- any other attributes you want to include
 ) INHERITS (entities);
 
+INSERT INTO table_documents VALUES 
+(2, '[{"id":1,"age":"12","col":"red","dob":"","name":"Oli Bob"},{"id":2,"age":"1","col":"blue","dob":"14/05/1982","name":"Mary May"},{"id":3,"age":"42","col":"green","dob":"22/05/1982","name":"Christine Lobowski"},{"id":4,"age":"125","col":"orange","dob":"01/08/1980","name":"Brendon Philips"},{"id":5,"age":"16","col":"yellow","dob":"31/01/1999","name":"Margret Marmajuke"}]', NULL, NULL, NULL),
+(3, '[{"id":1,"age":"12","col":"red","dob":"","name":"Oli Bob"},{"id":2,"age":"1","col":"blue","dob":"14/05/1982","name":"Mary May"},{"id":3,"age":"42f","col":"green","dob":"22/05/1982","name":"Christine Lobowski"},{"id":4,"age":"125","col":"orange","dob":"01/08/1980","name":"Brendon Philips"},{"id":5,"age":"16","col":"yellow","dob":"31/01/1999","name":"Margret Marmajuke"}]', NULL, NULL, NULL);
 
--- donezo
+create TABLE canvas_templates (
+  id SERIAL PRIMARY KEY,
+  tableId integer not null references table_documents(id) unique,
+  canvasData text not null
+) INHERITS (entities);
+
 CREATE TABLE entity_access (
   id SERIAL PRIMARY KEY,
-  entity_id serial NOT NULL REFERENCES entities(id),
+  entity_id integer NOT NULL REFERENCES entities(id),
   role_name TEXT NOT NULL CHECK (role_name in ('view', 'edit', 'moderate', 'manage')),
   user_id uuid not null REFERENCES auth.users,
   UNIQUE (entity_id, role_name, user_id)

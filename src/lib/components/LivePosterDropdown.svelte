@@ -4,26 +4,27 @@
     import { supabase } from '../supabaseClient';
     
     
-    async function uploadCn() {
+    export let tableId = 2;
+
+    async function uploadCanvasTemplate(canvasFileContent: string) {
         // get the table data and save it to Supabase
-        const newTableData = getTableData();
-        await supabase.functions.invoke("saveTable", {
-        body: { tableId, tableData: newTableData },
+        await supabase.functions.invoke("saveCanvasTemplate", {
+            body: { tableId, canvasData: canvasFileContent },
         });
     }
 
     let options = [{
             name: "Design poster",
-            handler: () => {push('/canvas/33')},
+            handler: () => {push(`/canvas/`)},
         }, {
             name: "Upload poster template",
             handler: () => {
                 const i = document.createElement('input');
                 i.type = 'file';
-                i.addEventListener('change', (event) => {
-                    const file = event.target.files[0];
-                    const formData = new FormData();
-                    formData.append('file', file);
+                i.addEventListener('change', async (event) => {
+                    const file = (event.target as HTMLInputElement).files[0];
+                    const content = await file.text();
+                    uploadCanvasTemplate(content);
                     // what if file is too large / isn't renderable by design editor
                     // TODO: what if len(files) > 1?
                 });

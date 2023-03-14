@@ -3,7 +3,7 @@
 
     interface DropdownItemDetails {
         name: string;
-        handler: Function;
+        handler: (MouseEvent) => void;
     }
 
     export let options: Array<DropdownItemDetails>;

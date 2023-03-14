@@ -9,6 +9,23 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      canvas_templates: {
+        Row: {
+          canvasdata: string
+          id: number
+          tableid: number
+        }
+        Insert: {
+          canvasdata: string
+          id?: number
+          tableid?: number
+        }
+        Update: {
+          canvasdata?: string
+          id?: number
+          tableid?: number
+        }
+      }
       entities: {
         Row: {
           id: number
