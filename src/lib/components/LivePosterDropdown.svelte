@@ -13,6 +13,15 @@
         });
     }
 
+    async function getTemplatedCanvas() {
+        // get the table data and save it to Supabase
+        let resp = await supabase.functions.invoke("getTemplatedCanvas", {
+            body: { tableId },
+        });
+
+        return resp.data.templatedCanvas;
+    }
+
     let options = [{
             name: "Design poster",
             handler: () => {push(`/canvas/`)},
@@ -31,11 +40,25 @@
                 i.click();
             },
         }, {
-            name: "Download poster template",
-            handler: () => {console.log('c')},
+            name: "Download templated canvas",
+            handler: () => {
+                getTemplatedCanvas().then((templatedCanvas: string) => {
+                    debugger;
+                    const url = window.URL.createObjectURL(new Blob([templatedCanvas], {type: 'application/json'}));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = "templatedCanvas.json";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                });
+            },
         }, {
             name: "Render LivePoster",
-            handler: () => {console.log('d')},
+            handler: () => {
+                console.log('not yet implemented');
+            },
         }, {
             name: "Help!",
             handler: () => {console.log('e')},

@@ -14,7 +14,7 @@
   let enableRouter=true;
 
   const routes = {
-    '/': LivePosterDropdown,
+    '/home/': LivePosterDropdown,
     '/canvas/*': Canvas,
     '/tables/*': SaveableTable,
     '/test/': LivePosterDropdown

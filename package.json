@@ -38,6 +38,7 @@
     "flowbite-svelte": "^0.30.6",
     "gridjs": "^6.0.6",
     "gridjs-svelte": "^2.1.1",
+    "json-templates": "^4.2.0",
     "react": "^16.14.0",
     "react-helmet": "^6.1.0",
     "svelte-preprocess-react": "^0.14.1",

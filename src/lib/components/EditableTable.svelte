@@ -25,7 +25,8 @@
 	            return this.emptyToSpace(this.sanitizeHTML(cell.getValue()));
             }
     });
-
+    columns.splice(0, 0, {formatter:"rownum", frozen:true, title:"Row Number"})
+    
     onMount(() => {
         // consider switching out with handsontable
         table = new Tabulator(tableComponent, {

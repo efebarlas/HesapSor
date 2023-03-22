@@ -6,7 +6,7 @@
   let getTableData;
 
   // to do: change
-  let tableId = 1;
+  let tableId = 2;
   onMount(() => {
     // get the table component instance and initialize the Tabulator table
     // load table data from Supabase
@@ -27,6 +27,7 @@
       body: { tableId, tableData: newTableData },
     });
   }
+
 </script>
 {#await tablePromise}
 <p>Fetching table</p>
