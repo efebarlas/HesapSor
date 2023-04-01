@@ -6,13 +6,15 @@
   import LivePosterDropdown from './lib/components/LivePosterDropdown.svelte';
   import SaveableTable from './lib/components/SaveableTable.svelte';
   import Canvas from './lib/components/Canvas.svelte';
+  import ProtestCard from './lib/components/ProtestCard.svelte';
+  import ProtestCardList from './lib/components/ProtestCardList.svelte';
 
   import Router from 'svelte-spa-router';
     import TableEditor from './lib/pages/TableEditor.svelte';
 
   let session: AuthSession
-  let debuggingSingleComponent=false;
-  let enableRouter=true;
+  let debuggingSingleComponent=true;
+  let enableRouter=false;
 
   const routes = {
     '/home/': LivePosterDropdown,
@@ -48,6 +50,7 @@
   </div>
   {:else}
   <div class="centerer almost-all-of-window">
+    <ProtestCardList/>
   </div>
   {/if}
 {/if}
