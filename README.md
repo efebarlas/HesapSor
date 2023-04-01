@@ -1,3 +1,6 @@
+# ASKING FOR HELP!
+I can't finish this project on my own and am looking for people to collaborate with. Feel free to reach me through my email for questions (on my Github profile). Your help is (and will be by the people who will use the platform) much appreciated!
+
 # Svelte + TS + Vite
 
 This template should help get you started developing with Svelte and TypeScript in Vite.
