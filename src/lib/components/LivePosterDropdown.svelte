@@ -4,7 +4,7 @@
     import { supabase } from '../supabaseClient';
     
     
-    export let tableId = 2;
+    export let tableId;
 
     async function uploadCanvasTemplate(canvasFileContent: string) {
         // get the table data and save it to Supabase
@@ -43,7 +43,6 @@
             name: "Download templated canvas",
             handler: () => {
                 getTemplatedCanvas().then((templatedCanvas: string) => {
-                    debugger;
                     const url = window.URL.createObjectURL(new Blob([templatedCanvas], {type: 'application/json'}));
                     const link = document.createElement('a');
                     link.href = url;

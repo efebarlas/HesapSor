@@ -8,15 +8,16 @@
   import Canvas from './lib/components/Canvas.svelte';
 
   import Router from 'svelte-spa-router';
+    import TableEditor from './lib/pages/TableEditor.svelte';
 
   let session: AuthSession
-  let debuggingSingleComponent=true;
+  let debuggingSingleComponent=false;
   let enableRouter=true;
 
   const routes = {
     '/home/': LivePosterDropdown,
-    '/canvas/*': Canvas,
-    '/tables/*': SaveableTable,
+    '/canvas/:id': Canvas,
+    '/tables/:id': TableEditor,
     '/test/': LivePosterDropdown
   }
 
@@ -47,7 +48,6 @@
   </div>
   {:else}
   <div class="centerer almost-all-of-window">
-    <LivePosterDropdown />
   </div>
   {/if}
 {/if}
